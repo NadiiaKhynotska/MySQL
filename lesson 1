@@ -1,0 +1,68 @@
+use khynotska;
+
+select * from cars;
+drop table users;
+
+create table users (
+    id int not null auto_increment primary key ,
+    name varchar(255) not null ,
+    age int not null ,
+    status tinyint not null,
+    gender varchar(10) not null
+);
+
+insert into users values ( null, 'Petro', 32, 0, 'male');
+select * from users;
+select  name, gender from users;
+select * from users where name = 'oleg';
+select * from users where age = 25;
+
+select *from users where name like 'o%';
+select *from users where name like '%a';
+select *from users where name like '%li%';
+
+select *from users where name like '__e%';
+
+select * from users where age != 30;
+select * from users where age > 30;
+
+select * from users where age between 20 and 30;
+select * from users where age>=20 and age<=30;
+select * from users where age not between 20 and 30;
+
+select * from users where age>=20 and age<=30 and name like '%l%';
+select * from users where age>=20 and age<=30 or name = 'kokos';
+
+select * from users where age in (25,4,50,30);
+
+select * from users where length(name) = 4;
+
+select * from users order by id asc ;
+select * from users order by id desc;
+
+select * from users order by age desc ;
+
+select * from  users limit 4 offset 12;
+
+select * from users order by age limit 1;
+
+
+select min(age) as min_age from users;
+select max(age) as max_age from users;
+select avg(age) as avg_age from users;
+select sum(age) as sum_age from users;
+
+select count(*) as user_count from users;
+select count(*) as user_count, gender from users group by gender;
+select min(age) as min_age, gender from users group by gender;
+
+select count(*) as count, age from users group by age;
+
+select name from users order by name desc ;
+
+select count(*) as model_count, model from cars where year>=2020 group by model having model_count>=2;
+
+update users set age = 100, name = 'Kokonut'where name='kokos';
+select * from users;
+
+
